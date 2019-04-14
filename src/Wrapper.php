@@ -73,6 +73,9 @@ class Wrapper
     }
 
 
+    /**
+     * @param array $data
+     */
     public static function setCustomerData($data)
     {
         $inst = self::getInstance();
