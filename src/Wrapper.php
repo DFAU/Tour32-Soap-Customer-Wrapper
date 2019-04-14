@@ -57,6 +57,9 @@ class Wrapper
         return true;
     }
 
+    /**
+     * @return bool
+     */
     private function isConfigured() {
         return (self::$_wsdl && self::$_soapUser && self::$_soapPassword);
     }
