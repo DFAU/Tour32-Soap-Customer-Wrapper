@@ -10,6 +10,7 @@ namespace T32Dev\SoapCustomer\Wrapper\Data;
 
 
 use T32Dev\SoapCustomer\Wrapper\Data;
+use T32Dev\SoapCustomer\Wrapper\DynamischeEigenschaft;
 
 class Customer extends Data
 {
@@ -51,4 +52,34 @@ class Customer extends Data
         'Kinder'           => array(),
         'DynEigenschaften' => array(),
     );
+
+    public function buildRequestData($inputArray)
+    {
+        $data = parent::buildRequestData($inputArray);
+        if (isset($data['Kinder']) && is_array($data['Kinder']) && count($data['Kinder']) > 0) {
+            $kinderArray = array();
+            foreach ($data['Kinder'] as $kindData) {
+                $Kind = new Kind();
+                $kinderArray[] = $Kind->buildRequestData($kindData);
+            }
+            $data['Kinder'] = $kinderArray;
+        }
+        if (isset($data['Partner']) && is_array($data['Partner']) && count($data['Partner']) > 0) {
+            $partnerArray = array();
+            foreach ($data['Partner'] as $partnerData) {
+                $Partner = new Partner();
+                $partnerArray[] = $Partner->buildRequestData($partnerData);
+            }
+            $data['Partner'] = $partnerArray;
+        }
+        if (isset($data['DynEigenschaften']) && is_array($data['DynEigenschaften']) && count($data['DynEigenschaften']) > 0) {
+            $dynamischeEigenschaftenArray = array();
+            foreach ($data['DynEigenschaften'] as $dynData) {
+                $DynEigenschaft = new DynamischeEigenschaft();
+                $dynamischeEigenschaftenArray[] = $DynEigenschaft->buildRequestData($dynData);
+            }
+            $data['DynEigenschaften'] = $dynamischeEigenschaftenArray;
+        }
+        return $data;
+    }
 }

@@ -15,8 +15,20 @@ abstract class Data
     /**
      * @return array
      */
-    public function getDefaults() {
+    public function getDefaults()
+    {
         return $this->defaults;
+    }
+
+    /**
+     * @param $inputArray
+     * @return array
+     */
+    public function buildRequestData($inputArray)
+    {
+        $defaults = $this->getDefaults();
+        $outputArray = array_merge($defaults, $inputArray);
+        return $outputArray;
     }
 
 }

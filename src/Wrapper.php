@@ -9,6 +9,7 @@
 namespace T32Dev\SoapCustomer;
 
 use T32Dev\SoapCustomer\Wrapper\Data\Customer;
+use T32Dev\SoapCustomer\Wrapper\Kind;
 
 class Wrapper
 {
@@ -58,22 +59,12 @@ class Wrapper
         return true;
     }
 
-    /**
-     * @return bool
-     */
-    private function isConfigured() {
-        return (self::$_wsdl && self::$_soapUser && self::$_soapPassword);
-    }
 
     /**
      * @return bool
      */
     private function checkIfConfigured() {
-        $inst = self::getInstance();
-        if( !$inst->isConfigured() ) {
-            throw new Exception('Please set wsdl and credentials first. @see T32Dev\SoapCustomer\Wrapper::setConfig()');
-        }
-        return true;
+        return (self::$_wsdl && self::$_soapUser && self::$_soapPassword);
     }
 
 
@@ -84,12 +75,12 @@ class Wrapper
     {
         $inst = self::getInstance();
         $DataCustomer = new Customer();
-        $defaults = $DataCustomer->getDefaults();
-        $defaults = array_merge($defaults, array('SoapUuser' => self::$_soapPassword, 'SoapPassword' => self::$_soapPassword));
-        $data = array_merge($data, $defaults);
+        $data = $DataCustomer->buildRequestData($data);
+        $data = array_merge($data, array('SoapUser' => self::$_soapPassword, 'SoapPassword' => self::$_soapPassword));
+
 
         try {
-            $client = new SoapClient(self::$_wsdl);
+            $client = new \SoapClient(self::$_wsdl);
             try {
                 $result = $client->__call('SetData', ['TCustomerData' => $data]);
                 // alles OK
@@ -106,6 +97,8 @@ class Wrapper
             die("Exception: " . $ex->getMessage());
         }
     }
+
+
 
 
 }
