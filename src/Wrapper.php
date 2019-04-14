@@ -13,6 +13,7 @@ use T32Dev\SoapCustomer\Wrapper\Data\Customer;
 class Wrapper
 {
 
+    /** @var Wrapper */
     private static $_instance = null;
 
     private static $_wsdl = null;
