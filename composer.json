@@ -3,8 +3,7 @@
     "description": "",
     "require": {
         "php": ">=5.3.3",
-        "ext-soap": "*",
-        "wsdltophp/packagebase": "~2.0"
+        "ext-soap": "*"
     },
     "autoload": {
         "psr-4": {
