@@ -29,6 +29,7 @@ Die Konfiguration setzen:
     
 Einfachste Form Kundendaten zu übertragen:
 
+    T32Dev\SoapCustomer\Wrapper::setConfig($wsdl='', $user='', $pass='');
     $soapWrapper = new \T32Dev\SoapCustomer\Wrapper();
     $soapWrapper->setCustomerData(array(
         'Vorname'  => 'Max',
