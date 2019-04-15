@@ -10,6 +10,7 @@ namespace T32Dev\SoapCustomer;
 
 use T32Dev\SoapCustomer\Wrapper\Data\Customer;
 use T32Dev\SoapCustomer\Wrapper\Kind;
+use T32Dev\SoapCustomer\Wrapper\Result;
 
 class Wrapper
 {
@@ -19,7 +20,10 @@ class Wrapper
     private static $_soapUser = null;
     private static $_soapPassword = null;
 
-    protected $lastResult;
+    /**
+     * @var null|Result
+     */
+    protected $lastResult = null;
 
 
     public function __construct()
@@ -71,7 +75,7 @@ class Wrapper
             $client = new \SoapClient(self::$_wsdl);
             try {
                 $result = $client->__call('SetData', ['TCustomerData' => $data]);
-                $this->lastResult = $result;
+                $this->lastResult = new Result($result);
                 return true;
             } catch (Exception $ex) {
                 die( "Fehler:" . $ex->getMessage() . ' - ' . $client->__getLastResponse() );
@@ -86,6 +90,11 @@ class Wrapper
 
     public function getResult() {
         return $this->lastResult;
+    }
+
+    public function isSuccessful() {
+        $lastResult = $this->getResult();
+        return ( $lastResult && $lastResult->Status == 0 );
     }
 
 
