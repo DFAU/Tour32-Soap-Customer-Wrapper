@@ -81,3 +81,21 @@ Die Anwort kann separat ausgewertet werden, dazu kann das REsponse-Objekt ausgew
              'Geburtsdatum' => '01.01.1970'
          )
      ));
+
+#### Dynmische Eigenschaften:
+ 
+ 
+    $soapWrapper->setCustomerData(array(
+         'Vorname'  => 'Max',
+         'Nachname' => 'Mustermann',
+         'Mail'     => 'max@mustermann.de',
+         'DynEigenschaften'   => array( // mehrere dyn. Eigenschaften als array
+             array(
+                 'Remove'       => true
+                 'Vorgang'      => '?',
+                 'DynTyp'       => '?',
+                 'Schluessel'   => '?'
+                 'Text'         => '?'
+             )
+         )
+     ));
