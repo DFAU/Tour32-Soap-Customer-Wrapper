@@ -82,7 +82,7 @@ Die Anwort kann separat ausgewertet werden, dazu kann das REsponse-Objekt ausgew
          )
      ));
 
-#### Dynmische Eigenschaften:
+#### Dynamische Eigenschaften:
  
  
     $soapWrapper->setCustomerData(array(
