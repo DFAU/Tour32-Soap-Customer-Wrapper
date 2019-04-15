@@ -14,34 +14,19 @@ use T32Dev\SoapCustomer\Wrapper\Kind;
 class Wrapper
 {
 
-    /** @var Wrapper */
-    private static $_instance = null;
 
     private static $_wsdl = null;
     private static $_soapUser = null;
     private static $_soapPassword = null;
 
+    protected $lastResult;
 
-    private function __construct()
+
+    public function __construct()
     {
+        $this->checkIfConfigured();
     }
 
-    private function __clone()
-    {
-    }
-
-    /**
-     * Singleton instance
-     * @return Wrapper
-     */
-    private static function getInstance()
-    {
-        if (null === self::$_instance) {
-            self::$_instance = new self();
-        }
-        self::$_instance->checkIfConfigured();
-        return self::$_instance;
-    }
 
     /**
      * Sets wsdl and credentials
@@ -70,10 +55,11 @@ class Wrapper
 
     /**
      * @param array $data
+     * @return boolean
      */
-    public static function setCustomerData($data)
+    public function setCustomerData($data)
     {
-        $inst = self::getInstance();
+
         $DataCustomer = new Customer();
         $data = $DataCustomer->buildRequestData($data);
         $data = array_merge($data, array('SoapUser' => self::$_soapPassword, 'SoapPassword' => self::$_soapPassword));
@@ -83,11 +69,8 @@ class Wrapper
             $client = new \SoapClient(self::$_wsdl);
             try {
                 $result = $client->__call('SetData', ['TCustomerData' => $data]);
-                // alles OK
-                echo "Status: " 		. $result->Status ."\n";
-                echo "Error: "  		. $result->Error . "\n";
-                echo "Kundennummer: "  	. $result->ID . "\n";
-                echo "Doublette: "  	. $result->Doub . "\n";
+                $this->lastResult = $result;
+                return true;
             } catch (Exception $ex) {
                 die( "Fehler:" . $ex->getMessage() . ' - ' . $client->__getLastResponse() );
             }
@@ -96,6 +79,11 @@ class Wrapper
         } catch ( Exception $ex ) {
             die("Exception: " . $ex->getMessage());
         }
+        return false;
+    }
+
+    public function getResult() {
+        return $this->lastResult;
     }
 
 
