@@ -50,7 +50,7 @@ Die Anwort kann separat ausgewertet werden, dazu kann das REsponse-Objekt ausgew
         
 ### Erweiterte Daten (Partner, Kinder, Dynamische Eigenschaften)
 
- - Kinder:
+#### Kinder:
  
  
      $soapWrapper->setCustomerData(array(
@@ -67,7 +67,7 @@ Die Anwort kann separat ausgewertet werden, dazu kann das REsponse-Objekt ausgew
          )
      ));
 
- - Partner:
+#### Partner:
  
  
     $soapWrapper->setCustomerData(array(
