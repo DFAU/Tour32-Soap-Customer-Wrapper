@@ -26,6 +26,8 @@ class Partner extends Data
         'Mail'          => '',
         'Handy'         => '',
         'VorwahlG'      => '',
+        'TelefonG'      => '',
+        'HandyG'        => '',
         'FaxG'          => '',
         'MailG'         => '',
         'Passnummer'    => '',

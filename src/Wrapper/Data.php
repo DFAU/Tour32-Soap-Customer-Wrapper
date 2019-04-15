@@ -10,6 +10,9 @@ namespace T32Dev\SoapCustomer\Wrapper;
 
 abstract class Data
 {
+    const GENDER_MALE = 'M';
+    const GENDER_FEMALE = 'W';
+
     protected $defaults = array();
 
     /**

@@ -88,10 +88,16 @@ class Wrapper
         return false;
     }
 
+    /**
+     * @return Result|null
+     */
     public function getResult() {
         return $this->lastResult;
     }
 
+    /**
+     * @return bool
+     */
     public function isSuccessful() {
         $lastResult = $this->getResult();
         return ( $lastResult && $lastResult->Status == 0 );

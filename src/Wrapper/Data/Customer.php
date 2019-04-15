@@ -68,7 +68,7 @@ class Customer extends Data
             $partnerArray = array();
             foreach ($data['Partner'] as $partnerData) {
                 $Partner = new Partner();
-                $partnerArray[] = $Partner->buildRequestData($partnerData);
+                $partnerArray = $Partner->buildRequestData($partnerData);
             }
             $data['Partner'] = $partnerArray;
         }
