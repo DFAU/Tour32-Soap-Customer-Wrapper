@@ -1,4 +1,4 @@
-# php Soap Wrapper für Tour32Web Soap Webservices
+# php Soap Wrapper für Tour32Web Soap CustomerCGI
 
 #### Achtung: Dieses Paket ist **NUR** für Tour32Web Soap Webservices
 
