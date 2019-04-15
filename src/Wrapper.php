@@ -24,7 +24,9 @@ class Wrapper
 
     public function __construct()
     {
-        $this->checkIfConfigured();
+        if (!$this->checkIfConfigured() ) {
+            throw new \Exception("Bitte erst Konfiguration setzen @see T32Dev\SoapCustomer\Wrapper::setConfig()");
+        }
     }
 
 
