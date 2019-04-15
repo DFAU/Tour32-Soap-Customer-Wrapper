@@ -4,7 +4,7 @@
 
 Siehe https://www.tour32.de
 
-### Vorasussetzungen
+### Voraussetzungen
 
  - php5 oder php7
  - php Soap Extension (php-soap)
