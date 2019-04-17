@@ -105,7 +105,7 @@ Die Anwort kann separat ausgewertet werden, dazu kann das REsponse-Objekt ausgew
 ### Individuelle Eigenschaften bei abweichendem Webservice
 
 Falls Sie einen individuellen Webservice nutzen, dessen Objekte über abweichende bzw. zusätzliche Eigenschaften verfügen, können diese auch gesetzt werden.      
-Bsp: Das Partner-Objekt hat bei Ihnen eine zusätzliche Eigenschaft "Lieblingsfarbe" mit dem STandardwert "blau"
+Bsp: Das Partner-Objekt hat bei Ihnen eine zusätzliche Eigenschaft "Lieblingsfarbe" mit dem Standardwert "blau"
 Um eine Fehlermeldung "Object hasn't Property 'Lieblingsfarbe' zu vermeiden, wenn diese nicht gesetzt ist, setzen Sie bitte:
 
     \T32Dev\SoapCustomer\Wrapper\Data\Partner::addExtraProperty('Lieblingsfarbe', 'blau');
