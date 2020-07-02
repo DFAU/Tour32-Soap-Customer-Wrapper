@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: robert
@@ -8,14 +9,15 @@
 
 namespace T32Dev\SoapCustomer\Wrapper\Data;
 
-
 use T32Dev\SoapCustomer\Wrapper\Data;
-use T32Dev\SoapCustomer\Wrapper\DynamischeEigenschaft;
+use T32Dev\SoapCustomer\Wrapper\Data\DynamischeEigenschaft;
+use T32Dev\SoapCustomer\Wrapper\Data\KontaktHistorie;
 
 class Customer extends Data
 {
     protected $defaults = array(
         'FunctionType'     => 1,
+        'ID'               => 0,
         'Nachname'         => '',
         'Vorname'          => '',
         'Geschlecht'       => '',
@@ -48,9 +50,12 @@ class Customer extends Data
         'Verpflegung'      => '',
         'Nationalitaet'    => '',
         'Bemerkung'        => '',
+        'NotfallKontakt'   => '',
         'Partner'          => null,
         'Kinder'           => array(),
         'DynEigenschaften' => array(),
+        'Passdaten'        => null,
+        'KontaktHistorie'  => null,
     );
 
     public function buildRequestData($inputArray)
@@ -59,7 +64,7 @@ class Customer extends Data
         if (isset($data['Kinder']) && is_array($data['Kinder']) && count($data['Kinder']) > 0) {
             $kinderArray = array();
             foreach ($data['Kinder'] as $kindData) {
-                $Kind = new Kind();
+                $Kind          = new Kind();
                 $kinderArray[] = $Kind->buildRequestData($kindData);
             }
             $data['Kinder'] = $kinderArray;
@@ -67,7 +72,7 @@ class Customer extends Data
         if (isset($data['Partner']) && is_array($data['Partner']) && count($data['Partner']) > 0) {
             $partnerArray = array();
             foreach ($data['Partner'] as $partnerData) {
-                $Partner = new Partner();
+                $Partner      = new Partner();
                 $partnerArray = $Partner->buildRequestData($partnerData);
             }
             $data['Partner'] = $partnerArray;
@@ -75,10 +80,18 @@ class Customer extends Data
         if (isset($data['DynEigenschaften']) && is_array($data['DynEigenschaften']) && count($data['DynEigenschaften']) > 0) {
             $dynamischeEigenschaftenArray = array();
             foreach ($data['DynEigenschaften'] as $dynData) {
-                $DynEigenschaft = new DynamischeEigenschaft();
+                $DynEigenschaft                 = new DynamischeEigenschaft();
                 $dynamischeEigenschaftenArray[] = $DynEigenschaft->buildRequestData($dynData);
             }
             $data['DynEigenschaften'] = $dynamischeEigenschaftenArray;
+        }
+        if (isset($data['KontaktHistorie']) && !is_null($data['KontaktHistorie'])) {
+            $KontaktHistorie         = new KontaktHistorie();
+            $data['KontaktHistorie'] = $KontaktHistorie->buildRequestData($data['KontaktHistorie']);
+        }
+        if (isset($data['Passdaten']) && !is_null($data['Passdaten'])) {
+            $passDaten         = new Passdaten();
+            $data['Passdaten'] = $passDaten->buildRequestData($data['Passdaten']);
         }
         return $data;
     }

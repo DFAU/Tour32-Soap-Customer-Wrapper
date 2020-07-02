@@ -69,19 +69,19 @@ class Wrapper
         $DataCustomer = new Customer();
         $data = $DataCustomer->buildRequestData($data);
         $data = array_merge($data, array('SoapUser' => self::$_soapUser, 'SoapPassword' => self::$_soapPassword));
-
+        print_r($data);
         try {
             $client = new \SoapClient(self::$_wsdl);
             try {
                 $result = $client->__call('SetData', ['TCustomerData' => $data]);
                 $this->lastResult = new Result($result);
                 return true;
-            } catch (Exception $ex) {
+            } catch (\Exception $ex) {
                 die( "Fehler:" . $ex->getMessage() . ' - ' . $client->__getLastResponse() );
             }
-        } catch( SoapFault $sf )  {
+        } catch( \SoapFault $sf )  {
             die("SoapFault: " . $sf->getMessage());
-        } catch ( Exception $ex ) {
+        } catch ( \Exception $ex ) {
             die("Exception: " . $ex->getMessage());
         }
         return false;
