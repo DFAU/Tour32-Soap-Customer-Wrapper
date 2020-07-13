@@ -32,4 +32,18 @@ class Passdaten extends Data
         'Visum'           => array(),
     );
 
+    public function buildRequestData($inputArray)
+    {
+        $data = parent::buildRequestData($inputArray);
+        if (isset($data['Visum']) && is_array($data['Visum']) && count($data['Visum']) > 0) {
+            $visaArray = array();
+            foreach ($data['Visum'] as $visumData) {
+                $Visum      = new Visum();
+                $visaArray[] = $Visum->buildRequestData($visumData);
+            }
+            $data['Visum'] = $visaArray;
+        }      
+        return $data;      
+    }
+
 }

@@ -68,8 +68,7 @@ class Wrapper
 
         $DataCustomer = new Customer();
         $data = $DataCustomer->buildRequestData($data);
-        $data = array_merge($data, array('SoapUser' => self::$_soapUser, 'SoapPassword' => self::$_soapPassword));
-        print_r($data);
+        $data = array_merge($data, array('SoapUser' => self::$_soapUser, 'SoapPassword' => self::$_soapPassword));           
         try {
             $client = new \SoapClient(self::$_wsdl);
             try {

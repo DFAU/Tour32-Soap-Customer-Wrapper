@@ -2,30 +2,32 @@
 
 require_once dirname(__FILE__) . '/autoload.php';
 
+$cfg = include dirname(__FILE__) . '/config.php';
+
 T32Dev\SoapCustomer\Wrapper::setConfig(
-    'http://87.139.235.208:5001/Tour32/customercgi.exe/wsdl/ICustomer',
-    'TourIBE',
-    'TourIBE'
+    $cfg['wsdl'],
+    $cfg['user'],
+    $cfg['pass']
 );
 
 $soapWrapper = new \T32Dev\SoapCustomer\Wrapper();
-$response    = $soapWrapper->setCustomerData(array(
-    'Vorname'         => 'Max',
-    'Nachname'        => 'Mustermann',
-    'Mail'            => 'max@mustermann.de',
-    'KontaktHistorie' => array(
-        'Kontaktart' => '',
-        'Quelle'     => '',
-        'Memo'       => '',
-    ),
+$response    = $soapWrapper->setCustomerData($data = array(
+    'Vorname'         => 'Robert',
+    'Nachname'        => 'Schwandner',
+    'Mail'            => 'robert@kohlenberg.info',
+    // 'KontaktHistorie' => array(
+    //     'Kontaktart' => 'die Kontaktart 2',
+    //     'Quelle'     => 'die Quelle 2',
+    //     'Memo'       => 'das Memo 2',
+    // ),
     'Passdaten'       => array(
         'Reisepassnummer' => '123456',
-        'AusgestelltAm'   => '',
-        'AusgestelltIn'   => '',
-        'Gueltig_bis'     => '',
+        'AusgestelltAm'   => '01.01.2020',
+        'AusgestelltIn'   => 'Nürnberg',
+        'Gueltig_bis'     => '31.12.2025',
         'Religion'        => '',
-        'Staatszugeh'     => '',
-        'Geburtsland'     => '',
+        'Staatszugeh'     => 'Deutsch',
+        'Geburtsland'     => 'DE',
         'Geburtsort'      => '',
         'Beruf'           => '',
         'NameVater'       => '',
@@ -35,15 +37,19 @@ $response    = $soapWrapper->setCustomerData(array(
         'ReserveI1'       => 0,
         'ReserveI2'       => 0,
         'Visum'           => array(
-            'Nummer'     => '',
-            'Land'       => '',
-            'VLabel'     => '',
-            'Gueltig'    => '',
-            'Status'     => '',
-            'ReiseDatum' => '',
-            'Bemerkung'  => '',
+            array(
+                'Nummer'     => '123456789',
+                'Land'       => 'DE',
+                'VLabel'     => '',
+                'Gueltig'    => '01.01.2021',
+                'Status'     => '',
+                'ReiseDatum' => '05.01.2021',
+                'Bemerkung'  => 'Test',
+            ),
         ),
     ),
 ));
+
+print_r($data);
 
 print_r($soapWrapper->getResult());
