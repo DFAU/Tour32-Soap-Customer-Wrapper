@@ -107,9 +107,9 @@ Die Anwort kann separat ausgewertet werden, dazu kann das REsponse-Objekt ausgew
 
 
     $soapWrapper->setCustomerData($data = array(
-        'Vorname'         => 'Robert',
-        'Nachname'        => 'Schwandner',
-        'Mail'            => 'robert@kohlenberg.info',
+        'Vorname'         => 'Max',
+        'Nachname'        => 'mustermann',
+        'Mail'            => 'max@mustermann.de',
         'KontaktHistorie' => array(
             'Kontaktart' => 'die Kontaktart 2',
             'Quelle'     => 'die Quelle 2',
