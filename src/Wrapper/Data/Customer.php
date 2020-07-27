@@ -56,6 +56,7 @@ class Customer extends Data
         'DynEigenschaften' => array(),
         'Passdaten'        => null,
         'KontaktHistorie'  => null,
+        'FIT'              => null,
     );
 
     public function buildRequestData($inputArray)
@@ -92,6 +93,10 @@ class Customer extends Data
         if (isset($data['Passdaten']) && !is_null($data['Passdaten'])) {
             $passDaten         = new Passdaten();
             $data['Passdaten'] = $passDaten->buildRequestData($data['Passdaten']);
+        }
+        if (isset($data['FIT']) && !is_null($data['FIT'])) {
+            $fit         = new Fit();
+            $data['FIT'] = $fit->buildRequestData($data['FIT']);
         }
         return $data;
     }
