@@ -13,13 +13,13 @@ use T32Dev\SoapCustomer\Wrapper\Data;
 class DynamischeEigenschaft extends Data
 {
 
-    protected $defaults = array(
-        'Remove'     => true,
-        'Vorgang'    => '',
-        'DynTyp'     => 0,
+    protected $defaults = [
+        'Remove' => true,
+        'Vorgang' => '',
+        'DynTyp' => 0,
         'Schluessel' => '',
-        'Text'       => '',
+        'Text' => '',
 
-    );
+    ];
 
 }

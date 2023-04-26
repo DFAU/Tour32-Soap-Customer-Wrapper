@@ -13,14 +13,14 @@ use T32Dev\SoapCustomer\Wrapper\Data;
 class Visum extends Data
 {
 
-    protected $defaults = array(
-        'Nummer'     => '',
-        'Land'       => '',
-        'VLabel'     => '',
-        'Gueltig'    => '',
-        'Status'     => '',
+    protected $defaults = [
+        'Nummer' => '',
+        'Land' => '',
+        'VLabel' => '',
+        'Gueltig' => '',
+        'Status' => '',
         'ReiseDatum' => '',
-        'Bemerkung'  => '',
-    );
+        'Bemerkung' => '',
+    ];
 
 }

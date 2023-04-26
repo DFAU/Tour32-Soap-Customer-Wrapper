@@ -13,19 +13,19 @@ use T32Dev\SoapCustomer\Wrapper\Data;
 class Kind extends Data
 {
 
-    protected $defaults = array(
-        'Nachname'      => '',
-        'Vorname'       => '',
-        'Geburtsdatum'  => '',
-        'Geschlecht'    => '',
-        'Passnummer'    => '',
+    protected $defaults = [
+        'Nachname' => '',
+        'Vorname' => '',
+        'Geburtsdatum' => '',
+        'Geschlecht' => '',
+        'Passnummer' => '',
         'AusgestelltAm' => '',
-        'GueltigBis'    => '',
+        'GueltigBis' => '',
         'AusgestelltIn' => '',
-        'Beruf'         => '',
-        'Allergien'     => '',
-        'Verpflegung'   => '',
+        'Beruf' => '',
+        'Allergien' => '',
+        'Verpflegung' => '',
         'Nationalitaet' => '',
-    );
+    ];
 
 }

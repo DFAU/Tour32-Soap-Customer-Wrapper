@@ -8,10 +8,10 @@ use T32Dev\SoapCustomer\Wrapper\Data;
 class Fit extends Data
 {
 
-    protected $defaults = array(
+    protected $defaults = [
         'ID' => 0,
         'TravelDate' => '',
-        
-    );
+
+    ];
 
 }

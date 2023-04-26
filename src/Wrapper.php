@@ -28,7 +28,7 @@ class Wrapper
 
     public function __construct()
     {
-        if (!$this->checkIfConfigured() ) {
+        if (!$this->checkIfConfigured()) {
             throw new \Exception("Bitte erst Konfiguration setzen @see T32Dev\SoapCustomer\Wrapper::setConfig()");
         }
     }
@@ -54,7 +54,8 @@ class Wrapper
     /**
      * @return bool
      */
-    private function checkIfConfigured() {
+    private function checkIfConfigured()
+    {
         return (self::$_wsdl && self::$_soapUser && self::$_soapPassword);
     }
 
@@ -68,7 +69,7 @@ class Wrapper
 
         $DataCustomer = new Customer();
         $data = $DataCustomer->buildRequestData($data);
-        $data = array_merge($data, array('SoapUser' => self::$_soapUser, 'SoapPassword' => self::$_soapPassword));           
+        $data = array_merge($data, ['SoapUser' => self::$_soapUser, 'SoapPassword' => self::$_soapPassword]);
         try {
             $client = new \SoapClient(self::$_wsdl);
             try {
@@ -76,11 +77,11 @@ class Wrapper
                 $this->lastResult = new Result($result);
                 return true;
             } catch (\Exception $ex) {
-                die( "Fehler:" . $ex->getMessage() . ' - ' . $client->__getLastResponse() );
+                die("Fehler:" . $ex->getMessage() . ' - ' . $client->__getLastResponse());
             }
-        } catch( \SoapFault $sf )  {
+        } catch (\SoapFault $sf) {
             die("SoapFault: " . $sf->getMessage());
-        } catch ( \Exception $ex ) {
+        } catch (\Exception $ex) {
             die("Exception: " . $ex->getMessage());
         }
         return false;
@@ -89,19 +90,19 @@ class Wrapper
     /**
      * @return Result|null
      */
-    public function getResult() {
+    public function getResult()
+    {
         return $this->lastResult;
     }
 
     /**
      * @return bool
      */
-    public function isSuccessful() {
+    public function isSuccessful()
+    {
         $lastResult = $this->getResult();
-        return ( $lastResult && $lastResult->Status == 0 );
+        return ($lastResult && $lastResult->Status == 0);
     }
-
-
 
 
 }

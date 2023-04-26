@@ -14,31 +14,31 @@ use T32Dev\SoapCustomer\Wrapper\Data;
 class Partner extends Data
 {
 
-    protected $defaults = array(
-        'Nachname'      => '',
-        'Vorname'       => '',
-        'Geburtsdatum'  => '',
-        'Geschlecht'    => '',
-        'Anrede'        => '',
-        'Vorwahl'       => '',
-        'Telefon'       => '',
-        'Fax'           => '',
-        'Mail'          => '',
-        'Handy'         => '',
-        'VorwahlG'      => '',
-        'TelefonG'      => '',
-        'HandyG'        => '',
-        'FaxG'          => '',
-        'MailG'         => '',
-        'Passnummer'    => '',
+    protected $defaults = [
+        'Nachname' => '',
+        'Vorname' => '',
+        'Geburtsdatum' => '',
+        'Geschlecht' => '',
+        'Anrede' => '',
+        'Vorwahl' => '',
+        'Telefon' => '',
+        'Fax' => '',
+        'Mail' => '',
+        'Handy' => '',
+        'VorwahlG' => '',
+        'TelefonG' => '',
+        'HandyG' => '',
+        'FaxG' => '',
+        'MailG' => '',
+        'Passnummer' => '',
         'AusgestelltAm' => '',
-        'GueltigBis'    => '',
+        'GueltigBis' => '',
         'AusgestelltIn' => '',
-        'Beruf'         => '',
-        'Allergien'     => '',
-        'Verpflegung'   => '',
+        'Beruf' => '',
+        'Allergien' => '',
+        'Verpflegung' => '',
         'Nationalitaet' => '',
 
-    );
+    ];
 
 }

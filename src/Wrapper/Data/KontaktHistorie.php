@@ -13,10 +13,10 @@ use T32Dev\SoapCustomer\Wrapper\Data;
 class KontaktHistorie extends Data
 {
 
-    protected $defaults = array(
+    protected $defaults = [
         'Kontaktart' => '',
-        'Quelle'     => '',
-        'Memo'       => '',
-    );
+        'Quelle' => '',
+        'Memo' => '',
+    ];
 
 }

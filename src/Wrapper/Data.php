@@ -13,7 +13,7 @@ abstract class Data
     const GENDER_MALE = 'M';
     const GENDER_FEMALE = 'W';
 
-    protected $defaults = array();
+    protected $defaults = [];
 
     /**
      * Zusätzliche Eigenschaften - falls Objekte des Webservice sich von den Standard Properties unterscheiden
@@ -21,7 +21,7 @@ abstract class Data
      *
      * @var array
      */
-    protected static $extra_properties = array();
+    protected static $extra_properties = [];
 
     /**
      * @return array
@@ -29,8 +29,8 @@ abstract class Data
     public function getDefaults()
     {
         $defaults = $this->defaults;
-        if( $extraProperties = self::$extra_properties ) {
-            foreach( $extraProperties as $k => $v ) {
+        if ($extraProperties = self::$extra_properties) {
+            foreach ($extraProperties as $k => $v) {
                 $defaults[$k] = $v;
             }
         }
