@@ -11,7 +11,7 @@ class Fit extends Data
     protected $defaults = [
         'ID' => 0,
         'TravelDate' => '',
-
+        'Employee' => '',
     ];
 
 }
