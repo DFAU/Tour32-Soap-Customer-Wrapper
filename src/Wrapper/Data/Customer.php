@@ -57,6 +57,7 @@ class Customer extends Data
         'Passdaten' => null,
         'KontaktHistorie' => null,
         'FIT' => null,
+        'CustomizeSettings' => null,
     ];
 
     public function buildRequestData($inputArray)
@@ -97,6 +98,10 @@ class Customer extends Data
         if (isset($data['FIT']) && !is_null($data['FIT'])) {
             $fit = new Fit();
             $data['FIT'] = $fit->buildRequestData($data['FIT']);
+        }
+        if (isset($data['CustomizeSettings']) && !is_null($data['CustomizeSettings'])) {
+            $customizeSettings = new CustomizeSettings();
+            $data['CustomizeSettings'] = $customizeSettings->buildRequestData($data['CustomizeSettings']);
         }
         return $data;
     }
